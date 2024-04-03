@@ -22,3 +22,10 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+
+
+unix|win32: LIBS += -L$$PWD/../SerialReaderdll/build/debug/ -lSerialReaderdll
+
+INCLUDEPATH += $$PWD/../SerialReaderdll
+DEPENDPATH += $$PWD/../SerialReaderdll

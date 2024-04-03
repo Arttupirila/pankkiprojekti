@@ -6,10 +6,20 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    objectSerialReader = new SerialReaderdll;
+    connect(objectSerialReader,SIGNAL(serialRead(QString)),
+            this,SLOT(showCardNumberSlot(QString)));
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+void MainWindow::showCardNumberSlot(QString value)
+{
+    qDebug() << value;
+
+}
+
 
