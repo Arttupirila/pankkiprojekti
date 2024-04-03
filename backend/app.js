@@ -5,11 +5,13 @@ var logger = require('morgan');
 
 
 var indexRouter = require('./routes/index');
+
 var usersRouter = require('./routes/users');
 var cardRouter = require('./routes/card');
 const loginRouter=require('./routes/login.js');
 const jwt=require('jsonwebtoken');
 const dotenv=require('dotenv');
+var customerRouter = require('./routes/customer')
 dotenv.config();
 
 var app = express();
@@ -27,6 +29,7 @@ app.use(authenticateToken);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/card', cardRouter);
+app.use('/customer', customerRouter)
 
 
 function authenticateToken(req, res, next) {
@@ -45,10 +48,6 @@ function authenticateToken(req, res, next) {
       next()
     })
   }
-
-
-
-
 
 
 module.exports = app;
