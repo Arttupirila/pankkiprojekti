@@ -6,7 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 
-var usersRouter = require('./routes/users');
+// var usersRouter = require('./routes/users');
 var cardRouter = require('./routes/card');
 const loginRouter=require('./routes/login.js');
 const jwt=require('jsonwebtoken');
@@ -27,7 +27,7 @@ app.use('/login', loginRouter); // Ei suojattu
 app.use(authenticateToken);
 //suojatut
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+//app.use('/users', usersRouter);
 app.use('/card', cardRouter);
 app.use('/customer', customerRouter)
 
