@@ -16,9 +16,7 @@ SerialReaderdll::SerialReaderdll()
 void SerialReaderdll::showDataSlot()
 {
     QByteArray serialData = serialPort->readAll();
-    //qDebug()<< serialData;
     QString cardNumber = serialData.remove(0,3);
     cardNumber.chop(3);
-    //qDebug() << cardNumber;
     emit serialRead(cardNumber);
 }
