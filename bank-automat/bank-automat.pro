@@ -25,7 +25,10 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 
 
+
+
 unix|win32: LIBS += -L$$PWD/../SerialReaderdll/build/debug/ -lSerialReaderdll
 
 INCLUDEPATH += $$PWD/../SerialReaderdll
 DEPENDPATH += $$PWD/../SerialReaderdll
+

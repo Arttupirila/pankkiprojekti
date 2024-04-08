@@ -19,6 +19,7 @@ public:
 private:
     Ui::MainWindow *ui;
     SerialReaderdll *objectSerialReader;
+
 private slots:
     void showCardNumberSlot(QString);
 };
