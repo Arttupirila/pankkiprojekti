@@ -3,3 +3,5 @@ bank-automat/build/
 bank-automat/*.user
 SerialReaderdll/build/
 SerialReaderdll/*.user
+PinCodeDLL/build/
+PinCodeDLL/*.user
