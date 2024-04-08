@@ -23,5 +23,22 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
+<<<<<<< HEAD
 DISTFILES += \
     bankstyle.qss
+=======
+
+
+
+
+unix|win32: LIBS += -L$$PWD/../SerialReaderdll/build/debug/ -lSerialReaderdll
+
+INCLUDEPATH += $$PWD/../SerialReaderdll
+DEPENDPATH += $$PWD/../SerialReaderdll
+
+
+unix|win32: LIBS += -L$$PWD/../Pindll/build/debug/ -lPindll
+
+INCLUDEPATH += $$PWD/../Pindll
+DEPENDPATH += $$PWD/../Pindll
+>>>>>>> a2350e992711692107ea9e6913c94ec0ecfed4ce

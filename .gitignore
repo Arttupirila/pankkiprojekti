@@ -1,5 +1,7 @@
 backend/node_modules/
 bank-automat/build/
 bank-automat/*.user
-PinCodeDLL/build/
-PinCodeDLL/*.user
+SerialReaderdll/build/
+SerialReaderdll/*.user
+Pindll/build/
+Pindll/*.user

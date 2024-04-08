@@ -14,6 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+<<<<<<< HEAD
    <widget class="QFrame" name="BG">
     <property name="geometry">
      <rect>
@@ -379,6 +380,20 @@
     <zorder>btn_B</zorder>
     <zorder>btn_D</zorder>
     <zorder>label</zorder>
+=======
+   <widget class="QPushButton" name="btnTest">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>60</y>
+      <width>93</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>PushButton</string>
+    </property>
+>>>>>>> a2350e992711692107ea9e6913c94ec0ecfed4ce
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -386,11 +401,20 @@
     <rect>
      <x>0</x>
      <y>0</y>
+<<<<<<< HEAD
      <width>960</width>
      <height>22</height>
     </rect>
    </property>
   </widget>
+=======
+     <width>800</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+>>>>>>> a2350e992711692107ea9e6913c94ec0ecfed4ce
  </widget>
  <resources/>
  <connections/>

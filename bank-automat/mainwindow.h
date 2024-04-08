@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <SerialReaderdll.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -42,7 +43,15 @@ public:
 
 private:
     Ui::MainWindow *ui;
+<<<<<<< HEAD
     void btnClickedHandler();
 
+=======
+    SerialReaderdll *objectSerialReader;
+
+private slots:
+    void showCardNumberSlot(QString);
+    void on_btnTest_clicked();
+>>>>>>> a2350e992711692107ea9e6913c94ec0ecfed4ce
 };
 #endif // MAINWINDOW_H
