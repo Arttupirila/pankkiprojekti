@@ -32,3 +32,8 @@ unix|win32: LIBS += -L$$PWD/../SerialReaderdll/build/debug/ -lSerialReaderdll
 INCLUDEPATH += $$PWD/../SerialReaderdll
 DEPENDPATH += $$PWD/../SerialReaderdll
 
+
+unix|win32: LIBS += -L$$PWD/../Pindll/build/debug/ -lPindll
+
+INCLUDEPATH += $$PWD/../Pindll
+DEPENDPATH += $$PWD/../Pindll

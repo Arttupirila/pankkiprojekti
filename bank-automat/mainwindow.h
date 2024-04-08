@@ -22,5 +22,6 @@ private:
 
 private slots:
     void showCardNumberSlot(QString);
+    void on_btnTest_clicked();
 };
 #endif // MAINWINDOW_H
