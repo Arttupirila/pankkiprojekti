@@ -7,12 +7,13 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 
+{
 
     ui->setupUi(this);
     objectSerialReader = new SerialReaderdll;
     connect(objectSerialReader,SIGNAL(serialRead(QString)),
             this,SLOT(showCardNumberSlot(QString)));
-
+}
 
 MainWindow::~MainWindow()
 {
