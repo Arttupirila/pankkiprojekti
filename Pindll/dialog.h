@@ -1,26 +1,21 @@
- #ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef DIALOG_H
+#define DIALOG_H
 
-#include "ui_MainWindow.h"
-#include <QMainWindow>
-#include "mainwindow_global.h"
+#include <QDialog>
 
+namespace Ui {
+class Dialog;
+}
 
-
-
-QT_BEGIN_NAMESPACE
-namespace Ui { class MainWindow; }
-QT_END_NAMESPACE
-
-class PINCODEDLL_EXPORT MainWindow : public QMainWindow
+class Dialog : public QDialog
 {
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
+    explicit Dialog(QWidget *parent = nullptr);
+    ~Dialog();
 
-
+    QString getPin() const;
 
 private slots:
     void on_btn1_clicked();
@@ -50,10 +45,10 @@ private slots:
     void on_btnOK_clicked();
 
 private:
-    Ui::MainWindow *ui;
+    Ui::Dialog *ui;
     QString correctPin = "1234";
     int attempts = 3;
+    QString pin;
 };
-#endif // MAINWINDOW_H
 
-
+#endif // DIALOG_H
