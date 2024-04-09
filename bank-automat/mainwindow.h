@@ -25,9 +25,12 @@ private:
     QNetworkAccessManager *getManager;
     QNetworkReply *reply;
     QByteArray response_data;
+    QNetworkAccessManager *loginManager;
+    QByteArray webToken;
 
 private slots:
     void showCardNumberSlot(QString);
     void on_btnTest_clicked();
+    void loginSlot(QNetworkReply *reply);
 };
 #endif // MAINWINDOW_H
