@@ -1,4 +1,5 @@
 QT       += core gui
+QT +=network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -9,14 +10,23 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    htiedot.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    nosto.cpp \
+    valitse.cpp
 
 HEADERS += \
-    mainwindow.h
+    htiedot.h \
+    mainwindow.h \
+    nosto.h \
+    valitse.h
 
 FORMS += \
-    mainwindow.ui
+    htiedot.ui \
+    mainwindow.ui \
+    nosto.ui \
+    valitse.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -28,7 +38,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 
 unix|win32: LIBS += -L$$PWD/../SerialReaderdll/build/debug/ -lSerialReaderdll
-
 INCLUDEPATH += $$PWD/../SerialReaderdll
 DEPENDPATH += $$PWD/../SerialReaderdll
 
