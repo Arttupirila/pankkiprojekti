@@ -3,6 +3,9 @@
 
 #include <QMainWindow>
 #include <SerialReaderdll.h>
+#include <QtNetwork>
+#include <QNetworkAccessManager>
+#include <QJsonDocument>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -19,9 +22,14 @@ public:
 private:
     Ui::MainWindow *ui;
     SerialReaderdll *objectSerialReader;
+    QNetworkAccessManager *loginManager;
+    QNetworkReply *reply;
+    QByteArray response_data;
+    QByteArray webToken;
 
 private slots:
     void showCardNumberSlot(QString);
     void on_btnTest_clicked();
+    void loginSlot(QNetworkReply *reply);
 };
 #endif // MAINWINDOW_H
