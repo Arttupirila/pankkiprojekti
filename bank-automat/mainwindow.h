@@ -25,6 +25,7 @@ private:
     QNetworkAccessManager *loginManager;
     QNetworkReply *reply;
     QByteArray response_data;
+    QByteArray webToken;
 
 private slots:
     void showCardNumberSlot(QString);

@@ -67,7 +67,8 @@ void MainWindow::loginSlot(QNetworkReply *reply)
             //kirjautuminen onnistui
             msgBox.setText("kirjautuminen onnistui");
             msgBox.exec();
-
+            webToken = "Bearer "+response_data;
+            qDebug() << webToken;
         }
         else{
             msgBox.setText("Tunnus/salasana ei täsmää");
