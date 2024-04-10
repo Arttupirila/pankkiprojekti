@@ -1,5 +1,6 @@
 #include "dialog.h"
 #include "ui_dialog.h"
+#include <QDebug>
 
 Dialog::Dialog(QWidget *parent)
     : QDialog(parent)
@@ -119,10 +120,11 @@ void Dialog::on_btnErase_clicked()
 void Dialog::on_btnOK_clicked()
 {
     QString currentText = ui->lineEdit->text();
+    pin = currentText;
     if (currentText == correctPin){
         ui->label->setText("PIN Oikein");
         attempts = 3;
-        pin = currentText;
+        //pin = currentText;
     }
     else {
         ui->label->setText("PIN Väärin");
