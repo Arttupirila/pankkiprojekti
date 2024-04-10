@@ -51,9 +51,10 @@ private:
 
 =======
     SerialReaderdll *objectSerialReader;
-    QNetworkAccessManager *loginManager;
+    QNetworkAccessManager *getManager;
     QNetworkReply *reply;
     QByteArray response_data;
+    QNetworkAccessManager *loginManager;
     QByteArray webToken;
 
 private slots:

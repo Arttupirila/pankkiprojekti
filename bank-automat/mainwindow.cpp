@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "valitse.h"
 #include <QMessageBox>
 #include <environment.h>
 
@@ -8,11 +9,15 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
+
 {
+
     ui->setupUi(this);
     objectSerialReader = new SerialReaderdll;
-    connect(objectSerialReader,SIGNAL(serialRead(QString)),
-            this,SLOT(showCardNumberSlot(QString)));
+    //connect(objectSerialReader,SIGNAL(serialRead(QString)),
+    //        this,SLOT(showCardNumberSlot(QString)));
+    //testaus ilman serialReaderia
+    showCardNumberSlot("12344UYysys");
 }
 
 MainWindow::~MainWindow()
@@ -123,6 +128,10 @@ void MainWindow::loginSlot(QNetworkReply *reply)
             msgBox.exec();
             webToken = "Bearer "+response_data;
             qDebug() << webToken;
+            Valitse *objectValitse = new Valitse;
+            objectValitse -> setWebToken(webToken);
+            objectValitse -> open();
+
         }
         else{
             msgBox.setText("Tunnus/salasana ei täsmää");
