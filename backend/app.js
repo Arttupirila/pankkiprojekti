@@ -11,7 +11,9 @@ var cardRouter = require('./routes/card');
 const loginRouter=require('./routes/login.js');
 const jwt=require('jsonwebtoken');
 const dotenv=require('dotenv');
-var customerRouter = require('./routes/customer')
+var customerRouter = require('./routes/customer');
+var accountRouter = require('./routes/account.js');
+var proceduresRouter = require('./routes/procedures.js');
 dotenv.config();
 
 var app = express();
@@ -29,7 +31,9 @@ app.use(authenticateToken);
 app.use('/', indexRouter);
 //app.use('/users', usersRouter);
 app.use('/card', cardRouter);
-app.use('/customer', customerRouter)
+app.use('/customer', customerRouter);
+app.use('/account', accountRouter);
+app.use('/procedures', proceduresRouter);
 
 
 function authenticateToken(req, res, next) {
