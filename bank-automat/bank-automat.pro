@@ -37,6 +37,10 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
+<<<<<<< HEAD
+DISTFILES += \
+    bankstyle.qss
+=======
 
 
 
@@ -53,3 +57,4 @@ DEPENDPATH += $$PWD/../Pindll
 
 DISTFILES += \
     bank-automat.pro.user
+>>>>>>> a2350e992711692107ea9e6913c94ec0ecfed4ce
