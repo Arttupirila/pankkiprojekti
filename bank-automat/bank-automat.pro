@@ -1,4 +1,5 @@
 QT       += core gui
+
 QT += network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -11,15 +12,25 @@ CONFIG += c++17
 
 SOURCES += \
     environment.cpp \
+    htiedot.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    nosto.cpp \
+    valitse.cpp
 
 HEADERS += \
+    htiedot.h \
+    mainwindow.h \
+    nosto.h \
+    valitse.h \
     environment.h \
-    mainwindow.h
+
 
 FORMS += \
-    mainwindow.ui
+    htiedot.ui \
+    mainwindow.ui \
+    nosto.ui \
+    valitse.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -35,7 +46,6 @@ DISTFILES += \
 
 
 unix|win32: LIBS += -L$$PWD/../SerialReaderdll/build/debug/ -lSerialReaderdll
-
 INCLUDEPATH += $$PWD/../SerialReaderdll
 DEPENDPATH += $$PWD/../SerialReaderdll
 
@@ -44,4 +54,7 @@ unix|win32: LIBS += -L$$PWD/../Pindll/build/debug/ -lPindll
 
 INCLUDEPATH += $$PWD/../Pindll
 DEPENDPATH += $$PWD/../Pindll
+
+DISTFILES += \
+    bank-automat.pro.user
 >>>>>>> a2350e992711692107ea9e6913c94ec0ecfed4ce
