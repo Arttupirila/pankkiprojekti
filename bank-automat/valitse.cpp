@@ -1,5 +1,6 @@
 #include "valitse.h"
 #include "ui_valitse.h"
+#include"nosto.h"
 
 Valitse::Valitse(QWidget *parent)
     : QDialog(parent)
@@ -12,3 +13,17 @@ Valitse::~Valitse()
 {
     delete ui;
 }
+
+void Valitse::on_btnOtto_clicked()
+{
+    Nosto *objectNosto = new Nosto;
+    objectNosto -> setWebToken(webToken);
+    objectNosto -> open();
+}
+
+void Valitse::setWebToken(const QByteArray &newWebToken)
+{
+    webToken = newWebToken;
+    //qDebug()<<webToken;
+}
+

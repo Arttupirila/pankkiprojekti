@@ -15,8 +15,14 @@ public:
     explicit Valitse(QWidget *parent = nullptr);
     ~Valitse();
 
+    void setWebToken(const QByteArray &newWebToken);
+
+private slots:
+    void on_btnOtto_clicked();
+
 private:
     Ui::Valitse *ui;
+    QByteArray webToken;
 };
 
 #endif // VALITSE_H

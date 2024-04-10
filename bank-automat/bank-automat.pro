@@ -1,7 +1,6 @@
 QT       += core gui
 
 QT += network
->>>>>>> main
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -13,6 +12,7 @@ CONFIG += c++17
 
 SOURCES += \
     environment.cpp \
+    htiedot.cpp \
     main.cpp \
     mainwindow.cpp \
     nosto.cpp \
@@ -50,3 +50,6 @@ unix|win32: LIBS += -L$$PWD/../Pindll/build/debug/ -lPindll
 
 INCLUDEPATH += $$PWD/../Pindll
 DEPENDPATH += $$PWD/../Pindll
+
+DISTFILES += \
+    bank-automat.pro.user

@@ -4,6 +4,8 @@
 #include <QDialog>
 #include "htiedot.h"
 
+
+
 namespace Ui {
 class Nosto;
 }
@@ -15,6 +17,8 @@ class Nosto : public QDialog
 public:
     explicit Nosto(QWidget *parent = nullptr);
     ~Nosto();
+
+    void setWebToken(const QByteArray &newWebToken);
 
 private slots:
 
@@ -39,8 +43,33 @@ private slots:
         newHtiedot->show();
     }
 
+    void httpPost(int RahaMaara) {
+
+        QJsonObject jsonObj;
+        jsonObj.insert("rahaa",RahaMaara);
+
+        QString site_url="http://localhost:3000/procedures/nosto";
+        QNetworkRequest request((site_url));
+        request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+
+        //WEBTOKEN ALKU
+        request.setRawHeader(QByteArray("Authorization"),(webToken));
+        //WEBTOKEN LOPPU
+
+        postManager = new QNetworkAccessManager(this);
+        connect(postManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(nostoSlot(QNetworkReply*)));
+
+        reply = postManager->post(request, QJsonDocument(jsonObj).toJson());
+    }
+    void nostoSlot (QNetworkReply *reply);
+
+
 private:
     Ui::Nosto *ui;
+    QByteArray webToken;
+    QNetworkAccessManager *postManager;
+    QNetworkReply *reply;
+    QByteArray response_data;
 };
 
 #endif // NOSTO_H
