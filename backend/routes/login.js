@@ -44,7 +44,7 @@ router.post('/', function(request, response){
 
 function generateAccessToken(idCard) {
     dotenv.config();
-    return jwt.sign(idCard, process.env.MY_TOKEN, { expiresIn: '40s' });
+    return jwt.sign(idCard, process.env.MY_TOKEN, { expiresIn: '1000s' });
   };
 
 

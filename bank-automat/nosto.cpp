@@ -24,7 +24,7 @@ Nosto::~Nosto()
 
 void Nosto::on_btn20_clicked()
 {
-   // int Rahamaara = 20;
+    // int Rahamaara = 20;
     httpPost(20);
 }
 
@@ -79,4 +79,3 @@ void Nosto::setWebToken(const QByteArray &newWebToken)
     //qDebug()<<webToken;
 
 }
-
