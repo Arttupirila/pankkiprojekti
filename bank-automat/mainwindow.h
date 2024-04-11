@@ -46,10 +46,10 @@ public:
 
 private:
     Ui::MainWindow *ui;
-<<<<<<< HEAD
+
     void btnClickedHandler();
 
-=======
+
     SerialReaderdll *objectSerialReader;
     QNetworkAccessManager *getManager;
     QNetworkReply *reply;

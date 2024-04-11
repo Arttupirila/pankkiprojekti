@@ -25,14 +25,13 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-<<<<<<< HEAD
+
 void MainWindow::btnClickedHandler()
 {
     QPushButton * button = qobject_cast<QPushButton*>(sender());
     QString name = button->objectName();
     qDebug() << "Button clicked: " << name.last(1);
 }
-
 
 void MainWindow::on_btn_A_clicked()
 {    btnClickedHandler();}
@@ -78,7 +77,8 @@ void MainWindow::on_btn_9_clicked()
 {    btnClickedHandler();}
 void MainWindow::on_btn_0_clicked()
 {    btnClickedHandler();}
-=======
+
+
 void MainWindow::showCardNumberSlot(QString value)
 {
     qDebug() << value;
