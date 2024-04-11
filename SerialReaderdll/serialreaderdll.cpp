@@ -4,7 +4,7 @@
 SerialReaderdll::SerialReaderdll()
 {
     serialPort = new QSerialPort();
-    serialPort->setPortName("com6");
+    serialPort->setPortName("com4");
     serialPort->setBaudRate(QSerialPort::Baud9600);
     serialPort->setDataBits(QSerialPort::Data8);
     serialPort->setParity(QSerialPort::NoParity);

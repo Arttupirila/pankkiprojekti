@@ -2,6 +2,12 @@
 #define NOSTO_H
 
 #include <QDialog>
+
+#include <QMainWindow>
+#include <QtNetwork>
+#include <QNetworkAccessManager>
+#include <QJsonDocument>
+
 #include "htiedot.h"
 
 
@@ -61,7 +67,7 @@ private slots:
 
         reply = postManager->post(request, QJsonDocument(jsonObj).toJson());
     }
-    void nostoSlot (QNetworkReply *reply);
+    //void nostoSlot (QNetworkReply *reply);
 
 
 private:

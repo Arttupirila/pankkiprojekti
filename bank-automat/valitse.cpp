@@ -26,4 +26,3 @@ void Valitse::setWebToken(const QByteArray &newWebToken)
     webToken = newWebToken;
     //qDebug()<<webToken;
 }
-
