@@ -24,9 +24,13 @@ private:
     QByteArray response_data;
     QNetworkAccessManager *loginManager;
     QByteArray webToken;
+    void etsiTili(QByteArray token, QString cardNumber);
+    QString idCard;
+    QNetworkAccessManager *accountManager;
 private slots:
     void showCardNumberSlot(QString);
     void on_btnTest_clicked();
     void loginSlot(QNetworkReply *reply);
+    void accountSlot(QNetworkReply *reply);
 };
 #endif // MAINWINDOW_H

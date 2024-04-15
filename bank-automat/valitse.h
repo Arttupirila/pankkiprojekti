@@ -17,12 +17,15 @@ public:
 
     void setWebToken(const QByteArray &newWebToken);
 
+    void setAccountNumber(const QString &newAccountNumber);
+
 private slots:
     void on_btnOtto_clicked();
 
 private:
     Ui::Valitse *ui;
     QByteArray webToken;
+    QString accountNumber;
 };
 
 #endif // VALITSE_H
