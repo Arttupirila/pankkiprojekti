@@ -7,6 +7,7 @@ Valitse::Valitse(QWidget *parent)
     , ui(new Ui::Valitse)
 {
     ui->setupUi(this);
+
 }
 
 Valitse::~Valitse()
@@ -19,6 +20,12 @@ void Valitse::on_btnOtto_clicked()
     Nosto *objectNosto = new Nosto;
     objectNosto -> setWebToken(webToken);
     objectNosto -> open();
+}
+
+void Valitse::setAccountNumber(const QString &newAccountNumber)
+{
+    accountNumber = newAccountNumber;
+    qDebug() << accountNumber;
 }
 
 void Valitse::setWebToken(const QByteArray &newWebToken)

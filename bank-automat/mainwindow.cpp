@@ -12,13 +12,27 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     objectSerialReader = new SerialReaderdll;
     connect(objectSerialReader,SIGNAL(serialRead(QString)),
-            this,SLOT(showCardNumberSlot(QString)));
+           this,SLOT(showCardNumberSlot(QString)));
     //testaus ilman serialReaderia
-    //showCardNumberSlot("12344UYysys");
+    //showCardNumberSlot("0500CB1EDE");
 }
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::etsiTili(QByteArray token, QString cardNumber)
+{
+
+    QString site_url=Environment::getBaseUrl()+"/accountNumber/"+cardNumber;
+    QNetworkRequest request((site_url));
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+    request.setRawHeader(QByteArray("Authorization"),(token));
+    accountManager = new QNetworkAccessManager(this);
+    connect(accountManager, SIGNAL(finished(QNetworkReply*)),
+            this, SLOT(accountSlot(QNetworkReply*)));
+    reply = accountManager->get(request);
+
 }
 
 void MainWindow::showCardNumberSlot(QString value)
@@ -28,7 +42,7 @@ void MainWindow::showCardNumberSlot(QString value)
     objectPindll->openDllDialog();
     QString pin = objectPindll->getPinValue();
     qDebug() << pin;
-    QString idCard = value;
+    idCard = value;
     QString idPin = pin;
     QJsonObject jsonObj;
     jsonObj.insert("idCard",idCard);
@@ -60,6 +74,7 @@ void MainWindow::loginSlot(QNetworkReply *reply)
             msgBox.exec();
             webToken = "Bearer "+response_data;
             qDebug() << webToken;
+            etsiTili(webToken, idCard);
         }
         else{
             msgBox.setText("Tunnus/salasana ei täsmää");
@@ -68,4 +83,42 @@ void MainWindow::loginSlot(QNetworkReply *reply)
     }
     reply->deleteLater();
     loginManager->deleteLater();
+}
+
+void MainWindow::accountSlot(QNetworkReply *reply)
+{
+    response_data=reply->readAll();
+    qDebug() << response_data;
+    QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
+    QJsonArray json_array = json_doc.array();
+
+    reply->deleteLater();
+    accountManager->deleteLater();
+    qDebug() << json_array.size();
+    if (json_array.size() == 2)
+    {
+        qDebug() << "avataan valitsetili";
+        QString creditLimit1 = json_array.at(0)["creditLimit"].toString();
+        QString debitNumber;
+        QString creditNumber;
+        if (creditLimit1 == "0.00"){
+            debitNumber = json_array.at(0)["idAccount"].toString();
+            creditNumber = json_array.at(1)["idAccount"].toString();
+        }
+        else {
+            debitNumber = json_array.at(1)["idAccount"].toString();
+            creditNumber = json_array.at(0)["idAccount"].toString();
+        }
+        qDebug() << debitNumber;
+
+
+    }
+    else{
+        qDebug() << "mennään suoraan valitse";
+        QString accountNumber = json_array.at(0)["idAccount"].toString();
+        Valitse *objectValitse = new Valitse(this);
+        objectValitse->setWebToken(webToken);
+        objectValitse->setAccountNumber(accountNumber);
+        objectValitse->open();
+    }
 }

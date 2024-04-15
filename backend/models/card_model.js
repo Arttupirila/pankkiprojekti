@@ -27,7 +27,7 @@ const card ={
         return db.query('SELECT cardPin FROM card WHERE idCard=?',[cardNo],callback);
     },
     getAccountId(iC, callback){
-        return db.query('SELECT idAccount FROM cardaccount WHERE idCard = ?',[iC],callback);
+        return db.query('SELECT account.idAccount, creditLimit FROM cardaccount INNER JOIN account ON cardaccount.idAccount = account.idAccount WHERE idCard = ?',[iC],callback);
     }
 
 }
