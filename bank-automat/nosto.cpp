@@ -24,41 +24,50 @@ Nosto::~Nosto()
 
 void Nosto::on_btn20_clicked()
 {
-    // int Rahamaara = 20;
     httpPost(20);
+    //void nostoSlot (QNetworkReply *reply);
+
 }
 
 
 void Nosto::on_btn40_clicked()
 {
-    //int Rahamaara = 40;
     httpPost(40);
+    //void nostoSlot (QNetworkReply *reply);
+
 }
 
 
 void Nosto::on_btn60_clicked()
 {
-    //int Rahamaara = 60;
+
     httpPost(60);
+    //void nostoSlot (QNetworkReply *reply);
+
 }
 
 
 void Nosto::on_btn90_clicked()
 {
-    //int Rahamaara = 90;
     httpPost(90);
+    //void nostoSlot (QNetworkReply *reply);
+
 }
 
 
 void Nosto::on_btn140_clicked()
 {
     httpPost(140);
+    //void nostoSlot (QNetworkReply *reply);
+
 }
 
 
 void Nosto::on_btn240_clicked()
 {
     httpPost(240);
+    //void nostoSlot (QNetworkReply *reply);
+
 }
 
 
@@ -78,4 +87,33 @@ void Nosto::setWebToken(const QByteArray &newWebToken)
     webToken = newWebToken;
     //qDebug()<<webToken;
 
+}
+void Nosto::nostoSlot (QNetworkReply *reply)
+{
+    response_data=reply->readAll();
+    qDebug()<<response_data;
+    reply->deleteLater();
+    postManager->deleteLater();
+}
+
+void Nosto::httpPost(double RahaMaara) {
+
+    QJsonObject jsonObj;
+    jsonObj.insert("firstid","FI0445678900000084");
+    jsonObj.insert("amount", RahaMaara);
+
+
+    QString site_url="http://localhost:3000/procedures/nosto";
+    QNetworkRequest request((site_url));
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+
+    //WEBTOKEN ALKU
+    request.setRawHeader(QByteArray("Authorization"),(webToken));
+    //WEBTOKEN LOPPU
+
+    postManager = new QNetworkAccessManager(this);
+    connect(postManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(nostoSlot(QNetworkReply*)));
+
+
+    reply = postManager->post(request, QJsonDocument(jsonObj).toJson());
 }
