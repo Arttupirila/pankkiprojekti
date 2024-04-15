@@ -14,7 +14,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(objectSerialReader,SIGNAL(serialRead(QString)),
             this,SLOT(showCardNumberSlot(QString)));
     //testaus ilman serialReaderia
-    //showCardNumberSlot("12344UYysys");
+    //showCardNumberSlot("6319704283501674");
 }
 MainWindow::~MainWindow()
 {
@@ -60,6 +60,9 @@ void MainWindow::loginSlot(QNetworkReply *reply)
             msgBox.exec();
             webToken = "Bearer "+response_data;
             qDebug() << webToken;
+            Valitse *objectValitse = new Valitse;
+            objectValitse -> setWebToken(webToken);
+            objectValitse -> open();
         }
         else{
             msgBox.setText("Tunnus/salasana ei täsmää");
@@ -69,3 +72,4 @@ void MainWindow::loginSlot(QNetworkReply *reply)
     reply->deleteLater();
     loginManager->deleteLater();
 }
+

@@ -26,6 +26,8 @@ public:
 
     void setWebToken(const QByteArray &newWebToken);
 
+    QByteArray getWebToken() const;
+
 private slots:
 
     void on_btn20_clicked();
@@ -49,25 +51,10 @@ private slots:
         newHtiedot->show();
     }
 
-    void httpPost(int RahaMaara) {
+    void httpPost(double RahaMaara);
 
-        QJsonObject jsonObj;
-        jsonObj.insert("rahaa",RahaMaara);
+    void nostoSlot (QNetworkReply *reply);
 
-        QString site_url="http://localhost:3000/procedures/nosto";
-        QNetworkRequest request((site_url));
-        request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-
-        //WEBTOKEN ALKU
-        request.setRawHeader(QByteArray("Authorization"),(webToken));
-        //WEBTOKEN LOPPU
-
-        postManager = new QNetworkAccessManager(this);
-        connect(postManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(nostoSlot(QNetworkReply*)));
-
-        reply = postManager->post(request, QJsonDocument(jsonObj).toJson());
-    }
-    //void nostoSlot (QNetworkReply *reply);
 
 
 private:
