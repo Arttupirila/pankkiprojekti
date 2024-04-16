@@ -22,6 +22,7 @@ public:
 private slots:
     void on_btnOtto_clicked();
 
+    void on_SaldoBtn_clicked();
     void on_btnTapahtumat_clicked();
 
 private:

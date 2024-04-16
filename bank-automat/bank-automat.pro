@@ -11,6 +11,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     nosto.cpp \
+    saldo.cpp \
     tilitapahtumat.cpp \
     valitse.cpp \
     valitsetili.cpp
@@ -18,6 +19,7 @@ HEADERS += \
     htiedot.h \
     mainwindow.h \
     nosto.h \
+    saldo.h \
     tilitapahtumat.h \
     valitse.h \
     environment.h \
@@ -46,6 +48,7 @@ FORMS += \
     htiedot.ui \
     mainwindow.ui \
     nosto.ui \
+    saldo.ui \
     tilitapahtumat.ui \
     valitse.ui \
     valitsetili.ui
