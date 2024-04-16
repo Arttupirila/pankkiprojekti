@@ -33,13 +33,17 @@ void tilitapahtumat::populateList(QNetworkReply *reply)
     QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
     QJsonArray json_array = json_doc.array();
     QString list;
-    list="idAccount	dateAndTime	transactionType	transactionAmount	participantAccount \r";
+    list="idAccount\tdateAndTime transactionType transactionAmount participantAccount \r";
     foreach (const QJsonValue &value, json_array) {
-        QJsonObject json_obj =value.toObject();
-        list+=json_obj["idAccount"].toString()+" | ";
+        QJsonObject json_obj = value.toObject();
+        list+=json_obj["idAccount"].toString()+" \t ";
+        list+=json_obj["dateAndTime"].toString()+" \t ";
+        list+=json_obj["transactionType"].toString()+" \t ";
+        list+=json_obj["transactionAmount"].toString()+" \t ";
+
         list+="\r";
     }
-
+    ui->textTransactions->setText(list);
    }
 
 void tilitapahtumat::on_btnPopulate_clicked()
