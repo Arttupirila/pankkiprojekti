@@ -31,7 +31,7 @@ void Saldo::saldoSlot(QNetworkReply *reply)
     QString accountBalance;
     foreach (const QJsonValue &value, json_array) {
         QJsonObject json_obj = value.toObject();
-        accountBalance+=QString::number(json_obj["balance"].toInt());
+        accountBalance+=(json_obj["balance"].toString());
     }
 
     ui->lineEdit->setText(accountBalance);
