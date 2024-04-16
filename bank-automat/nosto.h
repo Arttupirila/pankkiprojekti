@@ -28,6 +28,8 @@ public:
 
     QByteArray getWebToken() const;
 
+    void setAccountNumber(const QString &newAccountNumber);
+
 private slots:
 
     void on_btn20_clicked();
@@ -63,6 +65,7 @@ private:
     QNetworkAccessManager *postManager;
     QNetworkReply *reply;
     QByteArray response_data;
+    QString accountNumber;
 };
 
 #endif // NOSTO_H

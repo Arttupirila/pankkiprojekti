@@ -17,7 +17,7 @@
    <property name="geometry">
     <rect>
      <x>340</x>
-     <y>200</y>
+     <y>150</y>
      <width>93</width>
      <height>29</height>
     </rect>
@@ -39,7 +39,7 @@
     <string>Saldo</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_3">
+  <widget class="QPushButton" name="btnTapahtumat">
    <property name="geometry">
     <rect>
      <x>340</x>
@@ -50,6 +50,19 @@
    </property>
    <property name="text">
     <string>Tapahtumat</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnSiirto">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>200</y>
+     <width>93</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Tilisiirto</string>
    </property>
   </widget>
  </widget>

@@ -12,14 +12,18 @@ SOURCES += \
     mainwindow.cpp \
     nosto.cpp \
     saldo.cpp \
-    valitse.cpp
+    tilitapahtumat.cpp \
+    valitse.cpp \
+    valitsetili.cpp
 HEADERS += \
     htiedot.h \
     mainwindow.h \
     nosto.h \
     saldo.h \
+    tilitapahtumat.h \
     valitse.h \
     environment.h \
+    valitsetili.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -45,4 +49,6 @@ FORMS += \
     mainwindow.ui \
     nosto.ui \
     saldo.ui \
-    valitse.ui
+    tilitapahtumat.ui \
+    valitse.ui \
+    valitsetili.ui
