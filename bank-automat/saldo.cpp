@@ -10,16 +10,6 @@ Saldo::Saldo(QWidget *parent)
 {
     ui->setupUi(this);
 
-    QString site_url="http://localhost:3000/account/balance";
-    QNetworkRequest request((site_url));
-    //WEBTOKEN ALKU
-    request.setRawHeader(QByteArray("Authorization"),(webToken));
-    //WEBTOKEN LOPPU
-    getManager = new QNetworkAccessManager(this);
-
-    connect(getManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(saldoSlot(QNetworkReply*)));
-
-    reply = getManager->get(request);
 }
 
 Saldo::~Saldo()
@@ -50,8 +40,30 @@ void Saldo::saldoSlot(QNetworkReply *reply)
     getManager->deleteLater();
 }
 
-void Saldo::setWebToken(const QByteArray &saldoWebToken)
+void Saldo::setAccountNumber(const QString &newAccountNumber)
 {
-    webToken = saldoWebToken;
+    accountNumber = newAccountNumber;
 }
+
+void Saldo::setWebToken(const QByteArray &newWebToken)
+{
+    webToken = newWebToken;
+}
+
+void Saldo::getSaldo()
+{
+    qDebug() << "saldo";
+    qDebug() << webToken;
+    QString site_url="http://localhost:3000/account/balance/"+accountNumber;
+    QNetworkRequest request((site_url));
+    //WEBTOKEN ALKU
+    request.setRawHeader(QByteArray("Authorization"),(webToken));
+    //WEBTOKEN LOPPU
+    getManager = new QNetworkAccessManager(this);
+
+    connect(getManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(saldoSlot(QNetworkReply*)));
+
+    reply = getManager->get(request);
+}
+
 

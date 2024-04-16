@@ -19,6 +19,9 @@ public:
     ~Saldo();
 
     void setWebToken(const QByteArray &newWebToken);
+    void getSaldo();
+
+    void setAccountNumber(const QString &newAccountNumber);
 
 private slots:
     void on_Lopeta_clicked();
@@ -31,6 +34,7 @@ private:
     QNetworkReply *reply;
     QByteArray response_data;
     QByteArray webToken;
+    QString accountNumber;
 
 };
 
