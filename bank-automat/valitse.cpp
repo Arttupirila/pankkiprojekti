@@ -1,4 +1,5 @@
 #include "valitse.h"
+#include "tilitapahtumat.h"
 #include "ui_valitse.h"
 #include"nosto.h"
 
@@ -19,6 +20,7 @@ void Valitse::on_btnOtto_clicked()
 {
     Nosto *objectNosto = new Nosto;
     objectNosto -> setWebToken(webToken);
+    objectNosto->setAccountNumber(accountNumber);
     objectNosto -> open();
 }
 
@@ -33,3 +35,12 @@ void Valitse::setWebToken(const QByteArray &newWebToken)
     webToken = newWebToken;
     //qDebug()<<webToken;
 }
+
+void Valitse::on_btnTapahtumat_clicked()
+{
+    tilitapahtumat *objectTilitapahtumat = new tilitapahtumat;
+    objectTilitapahtumat->setWebToken(webToken);
+    objectTilitapahtumat->setAccountNumber(accountNumber);
+    objectTilitapahtumat->open();
+}
+

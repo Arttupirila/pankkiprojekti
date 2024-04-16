@@ -96,10 +96,15 @@ void Nosto::nostoSlot (QNetworkReply *reply)
     postManager->deleteLater();
 }
 
+void Nosto::setAccountNumber(const QString &newAccountNumber)
+{
+    accountNumber = newAccountNumber;
+}
+
 void Nosto::httpPost(double RahaMaara) {
 
     QJsonObject jsonObj;
-    jsonObj.insert("firstid","FI0445678900000084");
+    jsonObj.insert("firstid", accountNumber);
     jsonObj.insert("amount", RahaMaara);
 
 

@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "valitse.h"
+#include "valitsetili.h"
 #include <QMessageBox>
 #include <environment.h>
 #include <pindll.h>
@@ -11,10 +12,10 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     objectSerialReader = new SerialReaderdll;
-    connect(objectSerialReader,SIGNAL(serialRead(QString)),
-           this,SLOT(showCardNumberSlot(QString)));
+  //  connect(objectSerialReader,SIGNAL(serialRead(QString)),
+   //        this,SLOT(showCardNumberSlot(QString)));
     //testaus ilman serialReaderia
-    //showCardNumberSlot("6319704283501674");
+    showCardNumberSlot("0500CB1EDE");
 }
 MainWindow::~MainWindow()
 {
@@ -74,9 +75,10 @@ void MainWindow::loginSlot(QNetworkReply *reply)
             msgBox.exec();
             webToken = "Bearer "+response_data;
             qDebug() << webToken;
-            Valitse *objectValitse = new Valitse;
-            objectValitse -> setWebToken(webToken);
-            objectValitse -> open();
+          //  Valitse *objectValitse = new Valitse;     //tämä vei suoraan valitse-näkymään etsitilin ohi
+          //  objectValitse -> setWebToken(webToken);
+          //  objectValitse -> open();
+        etsiTili(webToken, idCard);
         }
         else{
             msgBox.setText("Tunnus/salasana ei täsmää");
@@ -111,7 +113,12 @@ void MainWindow::accountSlot(QNetworkReply *reply)
             debitNumber = json_array.at(1)["idAccount"].toString();
             creditNumber = json_array.at(0)["idAccount"].toString();
         }
-        qDebug() << debitNumber;
+        valitseTili *objectValitseTili = new valitseTili(this);
+        objectValitseTili->setDebit(debitNumber);
+        objectValitseTili->setCredit(creditNumber);
+        objectValitseTili->setWebToken(webToken);
+        objectValitseTili->open();
+        //qDebug() << debitNumber;
 
 
     }
