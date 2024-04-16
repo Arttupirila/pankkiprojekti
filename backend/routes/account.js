@@ -78,4 +78,17 @@ router.delete('/:id',function(request,response){
     });
 });
 
+router.get('/balance/:id',function(request,response){
+    account.getBalance(request.params.id,function(err,result){
+        if(err){
+            console.log(err);
+            response.json(err.errno);
+        }
+        else{
+            console.log(result);
+            response.json(result);
+        }
+        })
+    });
+
 module.exports=router
