@@ -11,12 +11,14 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     nosto.cpp \
+    tilitapahtumat.cpp \
     valitse.cpp \
     valitsetili.cpp
 HEADERS += \
     htiedot.h \
     mainwindow.h \
     nosto.h \
+    tilitapahtumat.h \
     valitse.h \
     environment.h \
     valitsetili.h
@@ -44,5 +46,6 @@ FORMS += \
     htiedot.ui \
     mainwindow.ui \
     nosto.ui \
+    tilitapahtumat.ui \
     valitse.ui \
     valitsetili.ui
