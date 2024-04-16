@@ -1,6 +1,7 @@
 #include "valitse.h"
 #include "ui_valitse.h"
-#include"nosto.h"
+#include "nosto.h"
+#include "saldo.h"
 
 Valitse::Valitse(QWidget *parent)
     : QDialog(parent)
@@ -26,3 +27,11 @@ void Valitse::setWebToken(const QByteArray &newWebToken)
     webToken = newWebToken;
     //qDebug()<<webToken;
 }
+
+void Valitse::on_SaldoBtn_clicked()
+{
+    Saldo *objectSaldo = new Saldo;
+    objectSaldo -> setWebToken(webToken);
+    objectSaldo -> open();
+}
+

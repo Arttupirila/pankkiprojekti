@@ -20,6 +20,8 @@ public:
 private slots:
     void on_btnOtto_clicked();
 
+    void on_SaldoBtn_clicked();
+
 private:
     Ui::Valitse *ui;
     QByteArray webToken;

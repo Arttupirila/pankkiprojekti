@@ -1,55 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Valitse</class>
- <widget class="QDialog" name="Valitse">
+ <class>Saldo</class>
+ <widget class="QDialog" name="Saldo">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>538</width>
-    <height>409</height>
+    <width>501</width>
+    <height>366</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QPushButton" name="btnOtto">
+  <widget class="QPushButton" name="Lopeta">
    <property name="geometry">
     <rect>
-     <x>340</x>
+     <x>300</x>
      <y>200</y>
      <width>93</width>
      <height>29</height>
     </rect>
    </property>
    <property name="text">
-    <string>Otto</string>
+    <string>Lopeta</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="SaldoBtn">
+  <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>340</x>
-     <y>250</y>
-     <width>93</width>
-     <height>29</height>
+     <x>110</x>
+     <y>60</y>
+     <width>131</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="text">
-    <string>Saldo</string>
+    <string>Tilin saldo</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_3">
+  <widget class="QLineEdit" name="lineEdit">
    <property name="geometry">
     <rect>
-     <x>340</x>
-     <y>300</y>
-     <width>93</width>
-     <height>29</height>
+     <x>270</x>
+     <y>60</y>
+     <width>113</width>
+     <height>26</height>
     </rect>
-   </property>
-   <property name="text">
-    <string>Tapahtumat</string>
    </property>
   </widget>
  </widget>

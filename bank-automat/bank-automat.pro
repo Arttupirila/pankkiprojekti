@@ -11,11 +11,13 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     nosto.cpp \
+    saldo.cpp \
     valitse.cpp
 HEADERS += \
     htiedot.h \
     mainwindow.h \
     nosto.h \
+    saldo.h \
     valitse.h \
     environment.h \
 
@@ -42,4 +44,5 @@ FORMS += \
     htiedot.ui \
     mainwindow.ui \
     nosto.ui \
+    saldo.ui \
     valitse.ui
