@@ -16,6 +16,8 @@ var accountRouter = require('./routes/account.js');
 var accountNumberRouter = require('./routes/account_number.js');
 var proceduresRouter = require('./routes/procedures.js');
 var transactionRouter = require('./routes/transaction.js');
+var cardAccountRouter = require('./routes/cardaccount.js');
+var customerAccountRouter = require('./routes/customeraccount.js');
 dotenv.config();
 
 var app = express();
@@ -38,6 +40,8 @@ app.use('/account', accountRouter);
 app.use('/procedures', proceduresRouter);
 app.use('/accountNumber',accountNumberRouter);
 app.use('/transaction',transactionRouter);
+app.use('/cardaccount',cardAccountRouter);
+app.use('/customeraccount',customerAccountRouter);
 
 
 function authenticateToken(req, res, next) {
