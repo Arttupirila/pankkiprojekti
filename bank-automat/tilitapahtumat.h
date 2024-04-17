@@ -29,6 +29,8 @@ private slots:
     void populateList(QNetworkReply *reply);
 
 
+    void on_btnClose_clicked();
+
 private:
     Ui::tilitapahtumat *ui;
     QByteArray webToken;
