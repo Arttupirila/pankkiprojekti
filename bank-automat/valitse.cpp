@@ -1,7 +1,8 @@
 #include "valitse.h"
 #include "tilitapahtumat.h"
 #include "ui_valitse.h"
-#include"nosto.h"
+#include "nosto.h"
+#include "saldo.h"
 
 Valitse::Valitse(QWidget *parent)
     : QDialog(parent)
@@ -36,6 +37,16 @@ void Valitse::setWebToken(const QByteArray &newWebToken)
     //qDebug()<<webToken;
 }
 
+void Valitse::on_SaldoBtn_clicked()
+{
+    Saldo *objectSaldo = new Saldo;
+    qDebug() << "saldoBtn";
+    qDebug() << webToken;
+    objectSaldo -> setWebToken(webToken);
+    objectSaldo -> setAccountNumber(accountNumber);
+    objectSaldo -> getSaldo();
+    objectSaldo -> open();
+}
 void Valitse::on_btnTapahtumat_clicked()
 {
     tilitapahtumat *objectTilitapahtumat = new tilitapahtumat;
@@ -43,4 +54,5 @@ void Valitse::on_btnTapahtumat_clicked()
     objectTilitapahtumat->setAccountNumber(accountNumber);
     objectTilitapahtumat->open();
 }
+
 

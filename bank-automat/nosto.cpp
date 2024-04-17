@@ -1,6 +1,6 @@
 #include "nosto.h"
 #include "ui_nosto.h"
-
+#include "valitse.cpp"
 Nosto::Nosto(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::Nosto)
@@ -73,7 +73,7 @@ void Nosto::on_btn240_clicked()
 
 void Nosto::on_btnReturn_clicked()
 {
-
+    this -> close();
 }
 
 
@@ -92,6 +92,17 @@ void Nosto::nostoSlot (QNetworkReply *reply)
 {
     response_data=reply->readAll();
     qDebug()<<response_data;
+
+    QJsonDocument jsonDoc = QJsonDocument::fromJson(response_data);
+    QJsonObject jsonObj = jsonDoc.object();
+    int affectedRows = jsonObj.value("affectedRows").toInt();
+
+    if (affectedRows > 0) {
+        qDebug() << "Nosto onnistui!";
+    } else {
+        qDebug() << "Noston suorittaminen epäonnistui.";
+    }
+
     reply->deleteLater();
     postManager->deleteLater();
 }

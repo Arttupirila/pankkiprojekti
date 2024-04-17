@@ -12,10 +12,10 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     objectSerialReader = new SerialReaderdll;
-  //  connect(objectSerialReader,SIGNAL(serialRead(QString)),
-   //        this,SLOT(showCardNumberSlot(QString)));
+  connect(objectSerialReader,SIGNAL(serialRead(QString)),
+          this,SLOT(showCardNumberSlot(QString)));
     //testaus ilman serialReaderia
-    showCardNumberSlot("0600062009");
+    //showCardNumberSlot("0500CB1EDE");
 }
 MainWindow::~MainWindow()
 {
